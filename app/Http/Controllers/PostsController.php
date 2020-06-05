@@ -13,20 +13,24 @@ class PostsController extends Controller
     {
         $this->authorize('viewAny', Post::class);
 
-        return request()->user()->posts;
+        return PostResource::collection( request()->user()->posts);
     }
 
     public function store()
     {
         $this->authorize('create', Post::class);
 
-        request()->user()->posts()->create($this->validateData());
+        $post = request()->user()->posts()->create($this->validateData());
+
+        return (new PostResource($post))
+        ->response()
+        ->setStatusCode(201);
     }
 
     public function show(Post $post)
     {
         $this->authorize('view', $post);
-        return $post;
+        return new PostResource($post);
     }
 
     public function update(Post $post)
@@ -34,6 +38,10 @@ class PostsController extends Controller
         $this->authorize('update', $post);
 
         $post->update($this->validateData());
+
+        return (new PostResource($post))
+        ->response()
+        ->setStatusCode(200);
     }
 
     public function destroy(Post $post)
@@ -41,6 +49,8 @@ class PostsController extends Controller
         $this->authorize('delete', $post);
 
         $post->delete();
+
+        return response([], 204);
     }
 
     private function validateData(){

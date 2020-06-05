@@ -33,7 +33,16 @@ class PostsTest extends TestCase
         $response = $this->get('/api/posts?api_token=' . $user->api_token);
 
         $response->assertJsonCount(1)
-            ->assertJson([['id' => $post->id]]);
+        ->assertJson([
+            'data' => [
+                [
+                    'data' =>[
+                        'post_id' => $post->id
+                    ]
+                ]
+            ]
+        ]);
+
     }
 
     /** @test */
@@ -48,12 +57,19 @@ class PostsTest extends TestCase
     /** @test */
     public function an_authenticated_user_can_add_a_post()
     {
-        $this->post('/api/posts', $this->data());
+        $response = $this->post('/api/posts', $this->data());
 
         $post = Post::first();
 
         $this->assertEquals('Test caption', $post->caption);
         $this->assertEquals('testimage', $post->image);
+
+        $response->assertStatus(201);
+        $response->assertJson([
+            'data' =>[
+                'post_id' => $post->id
+            ]
+        ]);
     }
 
     /** @test */
@@ -79,8 +95,12 @@ class PostsTest extends TestCase
         $response = $this->get('/api/posts/' . $post->id . '?api_token=' . $this->user->api_token);
 
         $response->assertJsonFragment([
-            'caption' => $post->caption,
-            'image' => $post->image,
+            'data' => [
+                'post_id' => $post->id,
+                'caption' => $post->caption,
+                'image' => $post->image,
+                'last_updated' => $post->updated_at->diffForHumans()
+            ]
         ]);
     }
 
@@ -107,6 +127,13 @@ class PostsTest extends TestCase
 
         $this->assertEquals('Test caption', $post->caption);
         $this->assertEquals('testimage', $post->image);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'data' => [
+                'post_id' => $post->id
+            ]
+        ]);
     }
 
     // /** @test */
@@ -129,6 +156,7 @@ class PostsTest extends TestCase
         $response = $this->delete('/api/posts/' . $post->id, ['api_token' => $this->user->api_token]);
 
         $this->assertCount(0, Post::all());
+        $response->assertStatus(204);
     }
 
     // /** @test */
