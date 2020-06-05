@@ -37475,9 +37475,126 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("router-view")], 1)
+  return _c("div", { staticClass: "h-screen bgwhite" }, [
+    _c("div", { staticClass: "flex" }, [
+      _c("div", { staticClass: "pl-6 bg-gray-900 w-48 h-screen border-r-2" }, [
+        _c(
+          "nav",
+          { staticClass: "pt-2" },
+          [
+            _c(
+              "p",
+              { staticClass: "text-white text-3xl" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "hover:text-gray-300",
+                    staticStyle: { "text-decoration": "none" },
+                    attrs: { to: "/" }
+                  },
+                  [_vm._v("LarinstaJS")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticStyle: { "text-decoration": "none" },
+                attrs: { to: "/" }
+              },
+              [
+                _c("div", [
+                  _c(
+                    "p",
+                    {
+                      staticClass: "mt-5 text-pink-300 text-xl hover:text-white"
+                    },
+                    [_vm._v("All posts")]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticStyle: { "text-decoration": "none" },
+                attrs: { to: "/" }
+              },
+              [
+                _c("div", [
+                  _c(
+                    "p",
+                    { staticClass: "text-pink-400 text-xl hover:text-white" },
+                    [_vm._v("Create post")]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticStyle: { "text-decoration": "none" },
+                attrs: { to: "/" }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "mb-2",
+                    staticStyle: { position: "absolute", bottom: "0" }
+                  },
+                  [
+                    _c(
+                      "p",
+                      { staticClass: "text-pink-500 text-xl hover:text-white" },
+                      [_vm._v("Logout")]
+                    )
+                  ]
+                )
+              ]
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "flex flex-col flex-1 h-screen overflow-y-hidden" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "flex flex-col overflow-y-hidden flex-1" },
+            [_c("router-view", { staticClass: "p-6 overflow-x-hidden" })],
+            1
+          )
+        ]
+      )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "h-16 px-6 border-b border-gray-300 flex items-center justify-between"
+      },
+      [_c("div", [_vm._v("Posts")]), _vm._v(" "), _c("div", [_vm._v("Search")])]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -37506,7 +37623,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
+    return _c("div", {}, [
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card" }, [
@@ -52950,8 +53067,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\sjors\Desktop\Projects\LarinstaJs\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\sjors\Desktop\Projects\LarinstaJs\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\sjors\Desktop\Projects\LarinstaGit\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\sjors\Desktop\Projects\LarinstaGit\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
