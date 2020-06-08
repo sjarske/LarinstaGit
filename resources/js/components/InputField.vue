@@ -12,6 +12,7 @@
       :placeholder="placeholder"
       v-model="value"
       @input="updateField()"
+      required
     />
 
     <p class="text-pink-700 text-sm" v-text="errorMessage()">Error here</p>

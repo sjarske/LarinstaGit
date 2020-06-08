@@ -13,6 +13,6 @@ class Post extends Model
     }
 
     public function path(){
-        return url('/posts/' . $this->id);
+        return '/posts/' . $this->id;
     }
 }

@@ -13,12 +13,12 @@
 
           <router-link style="text-decoration : none" to="/">
             <div>
-              <p class="mt-5 text-pink-300 text-xl hover:text-white">All posts</p>
+              <p class="mt-5 text-pink-300 text-xl hover:text-white">-All posts</p>
             </div>
           </router-link>
           <router-link style="text-decoration : none" to="/posts/create">
             <div>
-              <p class="text-pink-400 text-xl hover:text-white">Create post</p>
+              <p class="text-pink-400 text-xl hover:text-white">-Create post</p>
             </div>
           </router-link>
           <router-link style="text-decoration : none" to="/">
@@ -32,7 +32,7 @@
       <div class="flex flex-col flex-1 h-screen overflow-y-hidden bg-white">
         <div class="h-16 px-6 border-b border-gray-300 flex items-center justify-between">
           <div>Posts</div>
-          <div>Search</div>
+          <UserCircle :name="user.name"/>
         </div>
         <div class="flex flex-col overflow-y-hidden flex-1">
           <router-view class="p-6 overflow-x-hidden"></router-view>
@@ -43,23 +43,29 @@
 </template>
 
 <script>
+import UserCircle from './UserCircle';
+
 export default {
-  name:"App",
+  name: "App",
 
-  props:[
-    'user'
-  ],
+  props: ["user"],
 
-  mounted(){
-    window.axios.interceptors.request.use(
-      (config)=>{
-        config.data ={
+  components: {
+    UserCircle
+  },
+
+  created() {
+    window.axios.interceptors.request.use(config => {
+      if (config.method === "get") {
+        config.url = config.url + "?api_token=" + this.user.api_token;
+      } else {
+        config.data = {
           ...config.data,
           api_token: this.user.api_token
         };
-        return config;
       }
-    )
+      return config;
+    });
   }
-}
+};
 </script>
