@@ -2036,22 +2036,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "InputField",
-  props: ["caption", "label", "placeholder", 'errors'],
+  props: ["name", "label", "placeholder", "errors", "data"],
   data: function data() {
     return {
-      value: ''
+      value: ""
     };
+  },
+  computed: {
+    hasError: function hasError() {
+      return this.errors && this.errors[this.name] && this.errors[this.name].length > 0;
+    }
   },
   methods: {
     updateField: function updateField() {
-      this.$emit('update:field', this.value);
+      this.clearErrors(this.name);
+      this.$emit("update:field", this.value);
     },
-    errorMessage: function errorMessage(field) {
-      if (this.errors && this.errors[field] && this.errors[field].length > 0) {
-        return this.errors[field][0];
+    errorMessage: function errorMessage() {
+      if (this.hasError) {
+        return this.errors[this.name][0];
       }
+    },
+    clearErrors: function clearErrors() {
+      if (this.hasError) {
+        this.errors[this.name] = null;
+      }
+    },
+    errorClassObject: function errorClassObject() {
+      return {
+        "error-field": this.hasError
+      };
+    }
+  },
+  watch: {
+    data: function data(val) {
+      this.value = val;
     }
   }
 });
@@ -37860,7 +37882,7 @@ var render = function() {
       "label",
       {
         staticClass: "text-teal-400 pt-2 uppercase text-xs font-bold absolute",
-        attrs: { for: _vm.caption }
+        attrs: { for: _vm.name }
       },
       [_vm._v(_vm._s(_vm.label))]
     ),
@@ -37876,7 +37898,8 @@ var render = function() {
       ],
       staticClass:
         "pt-8 w-full border-b pb-2 focus:outline-none focus:border-teal-400 text-gray-700",
-      attrs: { id: _vm.caption, type: "text", placeholder: _vm.placeholder },
+      class: _vm.errorClassObject(),
+      attrs: { id: _vm.name, type: "text", placeholder: _vm.placeholder },
       domProps: { value: _vm.value },
       on: {
         input: [
@@ -37897,7 +37920,7 @@ var render = function() {
       "p",
       {
         staticClass: "text-pink-700 text-sm",
-        domProps: { textContent: _vm._s(_vm.errorMessage(_vm.caption)) }
+        domProps: { textContent: _vm._s(_vm.errorMessage()) }
       },
       [_vm._v("Error here")]
     )
@@ -53397,15 +53420,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************!*\
   !*** ./resources/js/components/InputField.vue ***!
   \************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _InputField_vue_vue_type_template_id_eb71a80a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InputField.vue?vue&type=template&id=eb71a80a&scoped=true& */ "./resources/js/components/InputField.vue?vue&type=template&id=eb71a80a&scoped=true&");
 /* harmony import */ var _InputField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InputField.vue?vue&type=script&lang=js& */ "./resources/js/components/InputField.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _InputField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _InputField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -53435,7 +53457,7 @@ component.options.__file = "resources/js/components/InputField.vue"
 /*!*************************************************************************!*\
   !*** ./resources/js/components/InputField.vue?vue&type=script&lang=js& ***!
   \*************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
