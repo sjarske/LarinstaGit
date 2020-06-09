@@ -55,6 +55,7 @@
           <img :src="post.image" alt width="350" height="350" />
         </div>
       </div>
+      <p class="text-teal-400 text-xs pt-1">Uploaded: {{ post.last_updated }}</p>
       <div>
         <p class="pt-2 text-gray-600 font-bold">{{ post.caption }}</p>
       </div>

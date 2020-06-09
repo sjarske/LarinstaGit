@@ -2453,6 +2453,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PostsShow",
@@ -38802,6 +38803,10 @@ var render = function() {
                 }
               })
             ])
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "text-teal-400 text-xs pt-1" }, [
+            _vm._v("Uploaded: " + _vm._s(_vm.post.last_updated))
           ]),
           _vm._v(" "),
           _c("div", [
