@@ -12,11 +12,12 @@
       <div v-for="post in posts">
         <router-link
           :to="'/posts/' + post.data.post_id"
-          class="flex items-center border-b border-gray-400 p-4 hover:bg-gray-100 hover:text-teal-400 font-bold"
+          class="flex items-center border-b border-gray-400 p-4 text-teal-400 hover:bg-gray-100 hover:text-gray-600 font-bold"
           style="text-decoration : none"
         >
           <div>
-            <p>{{ post.data.caption }}</p>
+            <p>{{ post.data.title }}</p>
+            <p class="text-gray-600">{{ post.data.caption }}</p>           
           </div>
         </router-link>
       </div>

@@ -17,6 +17,7 @@ class Post extends JsonResource
         return [
             'data' => [
                 'post_id' => $this->id,
+                'title' => $this->title,
                 'caption' => $this->caption,
                 'image' => $this->image,
                 'last_updated' => $this->updated_at->diffForHumans(),

@@ -55,6 +55,7 @@ class PostsController extends Controller
 
     private function validateData(){
         return request()->validate([
+            'title' => 'required',
             'caption' => 'required',
             'image' => 'required',
             'user_id' => '',        

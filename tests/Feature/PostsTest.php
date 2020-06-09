@@ -97,6 +97,7 @@ class PostsTest extends TestCase
         $response->assertJsonFragment([
             'data' => [
                 'post_id' => $post->id,
+                'title' => $post->title,
                 'caption' => $post->caption,
                 'image' => $post->image,
                 'last_updated' => $post->updated_at->diffForHumans()
@@ -174,6 +175,7 @@ class PostsTest extends TestCase
     private function data()
     {
         return [
+            'title' => 'Test Title',
             'caption' => 'Test caption',
             'image' => 'testimage',
             'api_token' => $this->user->api_token,

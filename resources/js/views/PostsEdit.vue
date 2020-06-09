@@ -10,6 +10,14 @@
     </div>
     <form @submit.prevent="submitForm">
       <InputField
+        name="title"
+        label="Post Title"
+        :errors="errors"
+        placeholder="Post Title"
+        @update:field="form.title = $event"
+        :data="form.title"
+      />
+      <InputField
         name="caption"
         label="Post Caption"
         :errors="errors"
@@ -63,6 +71,7 @@ export default {
   data: function() {
     return {
       form: {
+        title:"",
         caption: "",
         image: ""
       },

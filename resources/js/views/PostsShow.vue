@@ -3,28 +3,28 @@
     <div v-if="loading">Loading...</div>
     <div v-else>
       <div class="flex justify-between">
-        <a
+        <button
           style="text-decoration : none"
-            class="px-4 py-2 rounded text-sm text-teal-400 border font-bold mr-2 hover:bg-teal-200 hover:text-gray-700"
+          class="px-4 py-2 rounded text-sm text-teal-400 border font-bold mr-2 hover:bg-teal-200 hover:text-gray-700"
           @click="$router.back()"
-        >Back</a>
+        >Back</button>
         <div class="relative">
           <router-link
             :to="'/posts/' + post.post_id + '/edit'"
             class="px-4 py-2 rounded text-sm text-teal-400 border font-bold mr-2 hover:bg-teal-200 hover:text-gray-700"
             style="text-decoration : none"
           >Edit</router-link>
-          <a
+          <button
             style="text-decoration : none"
             class="px-4 py-2 border border-red-500 rounded test-sm font-bold text-red-500 hover:bg-red-200 hover:text-gray-700"
             @click="modal = ! modal"
-          >Delete</a>
+          >Delete</button>
 
           <div
             v-if="modal"
             class="absolute bg-teal-400 text-white rounded-lg z-20 p-8 w-64 right-0 mt-3 mr-6"
           >
-            <p>Are you sure you want to delete this record?</p>
+            <p>Are you sure you want to delete this photo?</p>
 
             <div class="flex items-center mt-6">
               <button
@@ -47,8 +47,10 @@
         ></div>
       </div>
 
+      <div class="pt-4">
+        <p class="pt-2 text-teal-400 font-bold text-xl">{{ post.title }}</p>
+      </div>
       <div class="flex items-center pt-6">
-        <div></div>
         <div>
           <img :src="post.image" alt width="350" height="350" />
         </div>
