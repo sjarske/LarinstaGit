@@ -38627,6 +38627,7 @@ var render = function() {
             _vm._l(_vm.posts, function(post) {
               return _c(
                 "div",
+                { key: post.post_id },
                 [
                   _c(
                     "router-link",

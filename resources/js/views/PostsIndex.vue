@@ -9,7 +9,7 @@
         </p>
       </div>
 
-      <div v-for="post in posts">
+      <div v-for="post in posts" :key="post.post_id">
         <router-link
           :to="'/posts/' + post.data.post_id"
           class="flex items-center border-b border-gray-400 p-4 text-teal-400 hover:bg-gray-100 hover:text-gray-600 font-bold"
