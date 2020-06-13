@@ -21,4 +21,5 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/posts/{post}', 'PostsController@show');
     Route::patch('/posts/{post}', 'PostsController@update');
     Route::delete('/posts/{post}', 'PostsController@destroy');
+    Route::get('/profiles', 'ProfilesController@index');
 });
