@@ -24,8 +24,11 @@ class ProfilesController extends Controller
         $profile= [];
         $user= User::find($id);  
         $posts = DB::table('posts')->where('user_id', '=', $id)->get();
-        array_push($profile, $user , $posts);
-        
+        $follows =(auth()->user()) ? auth()->user()->following->contains($user->id) : false;
+        $followers_count = $user->profile->followers;
+        $following_count = $user->following;
+        array_push($profile, $user , $posts, $follows, $followers_count, $following_count);
+
         return $profile;
     }
 }

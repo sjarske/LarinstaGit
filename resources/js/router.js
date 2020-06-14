@@ -8,6 +8,7 @@ import PostsIndex from "./views/PostsIndex";
 import Logout from "./Actions/Logout";
 import ProfilesIndex from "./views/ProfilesIndex";
 import ProfilesShow from "./views/ProfilesShow";
+import FollowButton from "./components/FollowButton";
 
 Vue.use(VueRouter);
 
@@ -22,6 +23,8 @@ export default new VueRouter({
 
         { path: '/profiles', component: ProfilesIndex},
         { path: '/profiles/:id', component: ProfilesShow},
+
+        { path: '/follow', component: FollowButton},
     ],
     mode: 'history',
 });
