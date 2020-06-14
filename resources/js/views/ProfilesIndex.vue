@@ -3,12 +3,16 @@
     <div v-if="loading">Loading...</div>
     <div v-else>
       <div v-for="profile in profiles" :key="profile.id">
-        <div
+        <router-link
           class="flex items-center border-b border-gray-400 p-4 text-teal-400 hover:bg-gray-100 hover:text-gray-600 font-bold"
           style="text-decoration : none"
+          :to="'/profiles/' + profile.id"
         >
-        
-        </div>
+          <div>
+            <p>{{ profile.name }}</p>
+            <p class="text-gray-600">{{ profile.description }}</p>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -42,7 +46,7 @@ export default {
   data: function() {
     return {
       loading: true,
-      profiles: null,
+      profiles: null
     };
   }
 };

@@ -13,7 +13,7 @@
 
           <router-link style="text-decoration : none" to="/posts">
             <div>
-              <p class="mt-5 text-pink-300 text-xl hover:text-white">-All posts</p>
+              <p class="mt-5 text-pink-300 text-xl hover:text-white">-My posts</p>
             </div>
           </router-link>
           <router-link style="text-decoration : none" to="/posts/create">
@@ -23,7 +23,7 @@
           </router-link>
           <router-link style="text-decoration : none" to="/profiles">
             <div>
-              <p class="text-pink-500 text-xl hover:text-white">-All profiles</p>
+              <p class="text-pink-500 text-xl hover:text-white">-Explore</p>
             </div>
           </router-link>
           <router-link style="text-decoration : none" to="/logout">
@@ -36,7 +36,7 @@
 
       <div class="flex flex-col flex-1 h-screen overflow-y-hidden bg-white">
         <div class="h-16 px-6 border-b border-gray-300 flex items-center justify-between">
-          <div>Photobook</div>
+          <div>By Sjors.</div>
           <UserCircle :name="user.name" />
         </div>
         <div class="flex flex-col overflow-y-hidden flex-1">

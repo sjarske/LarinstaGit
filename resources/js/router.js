@@ -7,6 +7,7 @@ import PostsEdit from "./views/PostsEdit";
 import PostsIndex from "./views/PostsIndex";
 import Logout from "./Actions/Logout";
 import ProfilesIndex from "./views/ProfilesIndex";
+import ProfilesShow from "./views/ProfilesShow";
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,7 @@ export default new VueRouter({
         { path: '/logout', component: Logout},
 
         { path: '/profiles', component: ProfilesIndex},
+        { path: '/profiles/:id', component: ProfilesShow},
     ],
     mode: 'history',
 });
